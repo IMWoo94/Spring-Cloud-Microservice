@@ -2,8 +2,9 @@
 > 마이크로 서비스 아키텍처를 기반으로 프로젝트를 진행하면서 분산 환경을 갖출 수 있도록 Spring Clould 가 제공된다.
 <br> configuration management, service discovery, circuit breakers, Load balancing
 
+## [Spring Cloud](https://spring.io/projects/spring-cloud)
 - [x] Spring Cloud Starter
-- [x] Spring Cloud Netflix ( service discovery )
+- [x] [Spring Cloud Netflix](https://docs.spring.io/spring-cloud-netflix/reference/index.html)
 
 
 ## MSA 표준 구성요소 / feat. [CNCF](https://landscape.cncf.io/)
