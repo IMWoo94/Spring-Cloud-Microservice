@@ -17,9 +17,15 @@
   - Server random port apply ( server.port : 0 )
   - Eureka Server registry true
   - Eureka Instance Id ( ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}})
-- [ ] Spring Cloud Gateway
-  - [Spring Boot Maintenace](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now)
+- [ ] Gateway
+  - [ deprecated ] Spring-Cloud-Netflix-Zuul ( API Gateway )
+    - [Zuul Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/zuul-service)
+      > #Spring boot 2.4.5 #Java11 #Gradle7.2 #Spring Cloud 2020.0.2 #Zuul2.2.10
+      - route
+        - path: /first-service/** <br> url: http://localhost:8081
+        - path: /second-service/** <br> url: http://localhost:8082
+  - [ deprecated ] Spring-Cloud-Netflix-Ribbon ( Client Side Load balancing )
+  - [feat. Spring Boot Maintenace](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now)
     <img width="795" alt="image" src="https://github.com/user-attachments/assets/68aa7cb8-b888-4f0b-95cd-9ca8eb6ffb1b">
-  - spring-cloud-netflix-zuul ( API Gateway )
-  - spring-cloud-netflix-ribbon ( client side load balancing )
+  - Spring Cloud Gateway
   
