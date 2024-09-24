@@ -17,3 +17,8 @@
   - Server random port apply ( server.port : 0 )
   - Eureka Server registry true
   - Eureka Instance Id ( ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}})
+- [ ] Spring Cloud Gateway
+  - [Spring Boot Maintenace](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now) 
+  - spring-cloud-netflix-zuul ( API Gateway )
+  - spring-cloud-netflix-ribbon ( client side load balancing )
+  
