@@ -18,7 +18,8 @@
   - Eureka Server registry true
   - Eureka Instance Id ( ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}})
 - [ ] Spring Cloud Gateway
-  - [Spring Boot Maintenace](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now) 
+  - [Spring Boot Maintenace](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now)
+    <img width="795" alt="image" src="https://github.com/user-attachments/assets/68aa7cb8-b888-4f0b-95cd-9ca8eb6ffb1b">
   - spring-cloud-netflix-zuul ( API Gateway )
   - spring-cloud-netflix-ribbon ( client side load balancing )
   
