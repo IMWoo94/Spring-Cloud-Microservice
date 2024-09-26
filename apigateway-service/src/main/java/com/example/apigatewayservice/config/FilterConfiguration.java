@@ -5,10 +5,10 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+// @Configuration
 public class FilterConfiguration {
 
-	@Bean
+	// @Bean
 	public RouteLocator getewayRoutes(RouteLocatorBuilder builder) {
 		return builder.routes()
 			.route(r -> r.path("/first-service/**")
