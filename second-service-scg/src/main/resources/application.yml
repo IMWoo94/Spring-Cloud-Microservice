@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: second-service-scg
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
