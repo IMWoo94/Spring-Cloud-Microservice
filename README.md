@@ -39,7 +39,7 @@
         
         <img width="492" alt="image" src="https://github.com/user-attachments/assets/090583b3-8e02-475c-bacd-f9ad45b261e3">
 - [x] Load balancer
-  > Spring Cloud GatewayFilter Factories 에서 제공된 ReactiveLoadBalancerClientFilter
+  > Spring Cloud Gateway Global Filter
   ```
   ReactiveLoadBalancerClientFilter 에 의해서 Load balancing
   Eureka 에 등록되어 있는 Application 정보를 가져와 URI 와 일치하는 마이크로 서비스에 제공한다.
