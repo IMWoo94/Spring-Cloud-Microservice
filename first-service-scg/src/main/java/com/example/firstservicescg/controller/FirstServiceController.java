@@ -24,4 +24,10 @@ public class FirstServiceController {
 		log.info("header = {}", header);
 		return "Hello to the First Service. feat. Spring Cloud GateWay";
 	}
+
+	@GetMapping("/check")
+	public String check() {
+		log.info("First Service Check");
+		return "Hi, there. This is a message from First Service.";
+	}
 }

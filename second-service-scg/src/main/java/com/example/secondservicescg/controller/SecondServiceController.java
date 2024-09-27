@@ -24,4 +24,10 @@ public class SecondServiceController {
 		log.info("header = {}", header);
 		return "Hello to the Second Service. feat. Spring Cloud GateWay";
 	}
+
+	@GetMapping("/check")
+	public String check() {
+		log.info("Second Service Check");
+		return "Hi, there. This is a message from Second Service.";
+	}
 }
