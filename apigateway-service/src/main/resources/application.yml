@@ -15,7 +15,13 @@ spring:
           predicates:
             - Path=/second-service/**
           filters:
-            - Custom
+            - name: Custom
+            - name: Logging
+              args:
+                baseMessage: Hi, there. Logging
+                preLogger: true
+                postLogger: true
+
       default-filters:
         - name: Global
           args:
