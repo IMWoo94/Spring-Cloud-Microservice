@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserController {
 
 	private final Environment env;
+	private final Greeting greeting;
 
 	@GetMapping("/health_check")
 	public String status() {
@@ -26,6 +27,7 @@ public class UserController {
 
 	@GetMapping("/welcome")
 	public String welcome() {
-		return env.getProperty("greeting.message");
+		// return env.getProperty("greeting.message");
+		return greeting.getMessage();
 	}
 }
