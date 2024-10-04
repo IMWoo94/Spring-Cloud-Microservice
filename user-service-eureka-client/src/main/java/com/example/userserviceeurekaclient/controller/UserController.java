@@ -4,6 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,7 @@ import com.example.userserviceeurekaclient.dto.UserDto;
 import com.example.userserviceeurekaclient.service.UserService;
 import com.example.userserviceeurekaclient.vo.Greeting;
 import com.example.userserviceeurekaclient.vo.request.RequestUser;
+import com.example.userserviceeurekaclient.vo.response.ResponseUser;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,14 +44,16 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public String createUser(
+	public ResponseEntity<ResponseUser> createUser(
 		@RequestBody RequestUser user
 	) {
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		UserDto userDto = mapper.map(user, UserDto.class);
-
 		userService.createUser(userDto);
-		return "Create user method ";
+
+		ResponseUser responseUser = mapper.map(userDto, ResponseUser.class);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
 	}
 }

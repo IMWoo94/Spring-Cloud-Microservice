@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
 		// TODO: password 암호화 처리 필요
 		userEntity.setEncryptedPassword("encrypted_password");
 
-		userRepository.save(userEntity);
-		return null;
+		return mapper.map(userEntity, UserDto.class);
 	}
 }
