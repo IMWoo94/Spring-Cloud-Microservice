@@ -51,4 +51,9 @@ public class WebSecurityConfiguration {
 				.ignoring()
 				.requestMatchers(PathRequest.toH2Console());
 	}
+
+	@Bean
+	BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
