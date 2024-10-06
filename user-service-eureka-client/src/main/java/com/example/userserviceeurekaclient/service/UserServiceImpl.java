@@ -1,16 +1,19 @@
 package com.example.userserviceeurekaclient.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.userserviceeurekaclient.dto.UserDto;
 import com.example.userserviceeurekaclient.entity.UserEntity;
 import com.example.userserviceeurekaclient.repository.UserRepository;
+import com.example.userserviceeurekaclient.vo.response.ResponseOrder;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,5 +43,28 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(userEntity);
 
 		return mapper.map(userEntity, UserDto.class);
+	}
+
+	@Override
+	public UserDto getUserByUserId(String userId) {
+		UserEntity userEntity = userRepository.findByUserId(userId);
+
+		if (userEntity == null) {
+			throw new UsernameNotFoundException("User not found");
+		}
+		ModelMapper mapper = new ModelMapper();
+		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		UserDto userDto = mapper.map(userEntity, UserDto.class);
+
+		// TODO : 주문 정보 조회
+		List<ResponseOrder> orders = new ArrayList<>();
+		userDto.setOrders(orders);
+
+		return userDto;
+	}
+
+	@Override
+	public Iterable<UserEntity> getUserByAll() {
+		return userRepository.findAll();
 	}
 }

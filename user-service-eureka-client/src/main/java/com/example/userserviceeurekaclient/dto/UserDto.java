@@ -1,6 +1,9 @@
 package com.example.userserviceeurekaclient.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.example.userserviceeurekaclient.vo.response.ResponseOrder;
 
 import lombok.Data;
 
@@ -13,4 +16,5 @@ public class UserDto {
 	private LocalDateTime createdAt;
 
 	private String encryptedPassword;
+	private List<ResponseOrder> orders;
 }
