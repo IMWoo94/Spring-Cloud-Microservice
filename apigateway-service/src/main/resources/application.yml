@@ -10,6 +10,12 @@ spring:
             - Path=/user-service/**
           filters:
             - RewritePath=/user-service/?(?<segment>.*), /$\{segment}
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - RewritePath=/catalog-service/?(?<segment>.*), /$\{segment}
         - id: first-service
           uri: lb://FIRST-SERVICE-SCG
           predicates:
