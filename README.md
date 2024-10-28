@@ -48,14 +48,7 @@
     - [reactive-loadbalancer-client-filter](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/global-filters.html#reactive-loadbalancer-client-filter)
     - [spring-cloud-loadbalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer)
 - MicroService [[APIs]](https://github.com/IMWoo94/Spring-Cloud-Microservice/wiki#users-apis)
+> #Spring boot 3.3.4 #Java21 #Gradle8 #Spring Cloud Eureka Client #Spring Security6.x #H2 #Spring Data JPA #ModelMapper
   - **Users** [User Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/user-service-eureka-client)
-    > #Spring boot 3.3.4 #Java21 #Gradle8 #Spring Cloud Eureka Client #Spring Security6.x #H2 #Spring Data JPA #ModelMapper
-    - Features.
-      - [x] 신규 회원 등록
-      - [ ] 회원 로그인
-      - [x] 상세 정보 확인
-      - [ ] 회원 정보 수정/삭제
-      - [ ] 상품 주문
-      - [ ] 주문 내역 확인 
-  - [ ] Catalogs
-  - [ ] Orders
+  - **Catalogs** [Catalog Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/catalog-service-eureka-client)
+  - **Orders** [Order Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/order-service-eureka-client)
