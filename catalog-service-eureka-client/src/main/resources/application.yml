@@ -21,6 +21,7 @@ server:
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+    status-page-url-path: /health_check
   client:
     # Eureka Server Add
     fetch-registry: true
