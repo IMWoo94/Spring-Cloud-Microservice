@@ -1,0 +1,2 @@
+### Get health_check
+GET {{baseUrl}}:{{port}}/users/{{userid}}

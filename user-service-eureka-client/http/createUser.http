@@ -1,0 +1,11 @@
+### GET request to example server
+POST {{baseUrl}}:{{port}}/users
+Content-Type: application/json
+
+{
+  "email": "leemeawoo94@gmail.com",
+  "name": "이상민",
+  "password": "12341234"
+}
+
+###

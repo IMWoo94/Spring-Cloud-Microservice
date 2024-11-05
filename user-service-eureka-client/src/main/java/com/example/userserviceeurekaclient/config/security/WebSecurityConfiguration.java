@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -31,7 +32,9 @@ public class WebSecurityConfiguration {
 
 		http.authorizeHttpRequests((request) ->
 				request
-					.requestMatchers("/health_check", "/welcome")
+					.requestMatchers(HttpMethod.POST, "/users")
+					.permitAll()
+					.requestMatchers(HttpMethod.GET, "/health_check", "/welcome")
 					.permitAll()
 					.requestMatchers(PathRequest.toH2Console())
 					.permitAll()
