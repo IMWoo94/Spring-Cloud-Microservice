@@ -52,3 +52,6 @@
   - **Users** [User Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/user-service-eureka-client)
   - **Catalogs** [Catalog Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/catalog-service-eureka-client)
   - **Orders** [Order Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/order-service-eureka-client)
+
+### Login 흐름
+![SpringCloudMicroservice_architecture](https://github.com/user-attachments/assets/1da06f32-f3c2-4757-b6ee-b854e66f945c)
