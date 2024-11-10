@@ -18,16 +18,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.example.userserviceeurekaclient.filter.AuthenticationFilter;
+import com.example.userserviceeurekaclient.service.CustomUserDetailsService;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfiguration {
+	private final CustomUserDetailsService customUserDetailsService;
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
-		AuthenticationFilter authenticationFilter = new AuthenticationFilter();
+		AuthenticationFilter authenticationFilter = new AuthenticationFilter(customUserDetailsService);
 		authenticationFilter.setAuthenticationManager(authenticationManager);
 
 		http.authorizeHttpRequests((request) ->
