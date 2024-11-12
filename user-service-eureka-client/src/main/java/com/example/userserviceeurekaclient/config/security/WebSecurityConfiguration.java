@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -18,7 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.example.userserviceeurekaclient.filter.AuthenticationFilter;
 import com.example.userserviceeurekaclient.service.CustomUserDetailsService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,10 +28,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebSecurityConfiguration {
 	private final CustomUserDetailsService customUserDetailsService;
+	private final Environment environment;
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManager authenticationManager) throws Exception {
-		AuthenticationFilter authenticationFilter = new AuthenticationFilter(customUserDetailsService);
+		AuthenticationFilter authenticationFilter = new AuthenticationFilter(customUserDetailsService, environment);
 		authenticationFilter.setAuthenticationManager(authenticationManager);
 
 		http.authorizeHttpRequests((request) ->
