@@ -1,0 +1,8 @@
+###  User Login
+POST {{baseUrl}}:{{port}}/login
+Content-Type: application/json
+
+{
+  "email": "leemeawoo94@gmail.com",
+  "password": "12341234"
+}

@@ -1,2 +1,3 @@
 ### Get health_check
 GET {{baseUrl}}:{{port}}/health_check
+Authorization: {{token}}}

@@ -1,7 +1,5 @@
 package com.example.apigatewayservice.filter;
 
-import java.nio.charset.StandardCharsets;
-
 import javax.crypto.SecretKey;
 
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
@@ -51,9 +50,9 @@ public class AuthorizationHeaderGatewayFilterFactory
 	}
 
 	private boolean isJwtValid(String jwt) {
-		String key = environment.getProperty("token.secret");
+		byte[] keyBytes = Decoders.BASE64.decode(environment.getProperty("token.secret"));
 		// 키는 최소 256비트 (32바이트) 이상의 길이를 가져야 합니다.
-		SecretKey secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+		SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
 		boolean returnValue = true;
 
 		String subject = null;

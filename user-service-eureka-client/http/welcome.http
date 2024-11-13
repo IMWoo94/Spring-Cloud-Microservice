@@ -1,2 +1,3 @@
 ### Get Welcome
 GET {{baseUrl}}:{{port}}/welcome
+Authorization: {{token}}}

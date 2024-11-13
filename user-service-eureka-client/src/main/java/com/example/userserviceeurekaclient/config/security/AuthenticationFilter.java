@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.crypto.SecretKey;
+
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -63,11 +67,15 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 		String username = ((User)authResult.getPrincipal()).getUsername();
 		UserDto userDetails = customUserDetailsService.getCurrentUser(username);
 
+		byte[] keyBytes = Decoders.BASE64.decode(environment.getProperty("token.secret"));
+		// 키는 최소 256비트 (32바이트) 이상의 길이를 가져야 합니다.
+		SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
+
 		String token = Jwts.builder()
 			.subject(userDetails.getUserId())
 			.expiration(new Date(System.currentTimeMillis() +
 				Long.parseLong(environment.getProperty("token.expiration_time"))))
-			.signWith(SignatureAlgorithm.HS256, environment.getProperty("token.secret"))
+			.signWith(SignatureAlgorithm.HS256, secretKey)
 			.compact();
 
 		response.addHeader("token", token);
