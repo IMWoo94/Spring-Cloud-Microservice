@@ -43,6 +43,8 @@ public class WebSecurityConfiguration {
 					.permitAll()
 					.requestMatchers(PathRequest.toH2Console())
 					.permitAll()
+					.requestMatchers("/actuator/**")
+					.permitAll()
 					.requestMatchers("/users/**")
 					.authenticated()
 			)
