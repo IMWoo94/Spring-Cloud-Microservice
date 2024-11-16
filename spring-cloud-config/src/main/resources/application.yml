@@ -6,6 +6,6 @@ spring:
       server:
         git:
           uri: file:///Users/imwoo/study/git-local-repo
-
+          default-label: master
 server:
   port: 8888
