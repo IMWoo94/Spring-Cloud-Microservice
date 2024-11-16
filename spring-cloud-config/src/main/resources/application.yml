@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-cloud-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///Users/imwoo/study/git-local-repo
+
+server:
+  port: 8888
