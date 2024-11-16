@@ -35,3 +35,8 @@ greeting:
 token:
   expiration_time: 86400000
   secret: userTokenVeryVerySecretKeyToUserTokenVeryVerySecretKey
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
