@@ -5,7 +5,9 @@ spring:
     config:
       server:
         git:
-          uri: file:///Users/imwoo/study/git-local-repo
-          default-label: master
+          uri: https://github.com/IMWoo94/Spring-Cloud-Microservice.git
+          default-label: main
+          skipSslValidation: true
+          searchPaths: cloud-config
 server:
   port: 8888
