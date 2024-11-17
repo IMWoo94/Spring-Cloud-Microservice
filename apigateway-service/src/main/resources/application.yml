@@ -58,6 +58,14 @@ spring:
                 baseMessage: Hi, there. Logging
                 preLogger: true
                 postLogger: true
+        - id: apigateway-service-actuator
+          uri: lb://APIGATEWAY-SERVICE
+          predicates:
+            - Path=/actuator/**
+            - Method=GET, POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/?(?<segment>.*), /$\{segment}
 
       default-filters:
         - name: Global
@@ -78,3 +86,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 token:
   secret: userTokenVeryVerySecretKeyToUserTokenVeryVerySecretKey
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httpexchanges
