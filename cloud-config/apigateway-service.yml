@@ -1,0 +1,9 @@
+token:
+  expiration_time: 86400000
+  secret: userTokenVeryVerySecretKeyToUserTokenVeryVerySecretKey
+
+gateway:
+  ip: 192.168.0.1
+
+application_profile:
+  name: apigateway-service default
