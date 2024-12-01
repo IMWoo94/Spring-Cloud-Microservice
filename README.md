@@ -6,6 +6,7 @@
 - [x] Spring Cloud Starter
 - [x] [Spring Cloud Netflix](https://docs.spring.io/spring-cloud-netflix/reference/index.html)
 - [x] [Spring Cloud Gateway](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/how-it-works.html)
+- [x] Spring Cloud Config
 
 ## MSA 표준 구성요소 / feat. [CNCF](https://landscape.cncf.io/)
 <img width="639" alt="image" src="https://github.com/user-attachments/assets/3fb62d40-30eb-4078-acdb-4818fe6283a1">
@@ -47,6 +48,21 @@
   ```
     - [reactive-loadbalancer-client-filter](https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/global-filters.html#reactive-loadbalancer-client-filter)
     - [spring-cloud-loadbalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer)
+- [x] Spring Cloud Config
+  - **Application 의 설정 파일 ( application.properties / application.yml ) 을 동적으로 서버 호출을 통해서 읽어 온다.**
+  ```
+  Application 을 구동하는 과정에서 application.properties / application.yml 설정 파일을 통해서 Server port, Eureka URL 등을 구동 시에 가져와서 선언하게 됩니다.
+  각 프로젝트별로 설정 파일이 존재하고, 이 설정 파일은 프로젝트 내에 필요한 내용만 작성이 됩니다.
+  Users 의 application.yml / Catalogs 의 application.yml / Spring Cloud Gateway 의 application.yml 처럼
+  사실 큰 프로젝트던, MSA 프로젝트이건 application.yml 은 한번 설정해두면 크게 바뀌는 일이 없지만, 바뀌게 되면 application 을 재 빌드하고 배포를 해야 합니다.
+  ```
+  - application 을 새롭게 빌드하고 배포하는게 많은 프로젝트가 아니고 CI/CD 가 무중단으로 되어 있다면 서비스에는 큰 필요성을 느끼지 못할 수 있습니다.
+  - 그럼 Spring Cloud Config 를 왜 사용하냐?
+      - MSA 같은 경우 실제로 많은 application 이 분리되어 있고, 동일한 application 이 10 ~ 20 개 이상의 여러 인스턴스를 생성하게 됩니다.
+      - application 정보를 수정하면, 10 ~ 20개의 인스턴스를 전부 CI/CD 를 해야합니다. 생각보다 한개의 인스턴스인 경우에 비해 작업 할게 늘어납니다.
+      - Spring Cloud Config 를 사용하면, **application 설정 정보를 Spring Cloud Config 를 통해서 CI/CD 없이 실행 중인 Application 에 반영할 수 있습니다.**
+      - 그리고 application 마다 중복되는 사항들이 있을 겁니다. 이를 공통 application 으로 중복을 제거하고 편리하게 쓸 수 있습니다.
+  - 개인적인 생각으로 동적으로 설정 파일을 변경 할 수 있지만, 이 과정에서도 refresh 라는 작업이 필요하게 되고 datasource 와 같은 작업은 동적 변경에 있어서 더 어려움이 있을 수 있으니 꼭 필요한가에 대한 생각이 듭니다.
 - MicroService [[APIs]](https://github.com/IMWoo94/Spring-Cloud-Microservice/wiki#users-apis)
 > #Spring boot 3.3.4 #Java21 #Gradle8 #Spring Cloud Eureka Client #Spring Security6.x #H2 #Spring Data JPA #ModelMapper
   - **Users** [User Service](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/user-service-eureka-client)
