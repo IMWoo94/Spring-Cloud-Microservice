@@ -51,6 +51,9 @@
     - [spring-cloud-loadbalancer](https://docs.spring.io/spring-cloud-commons/docs/current/reference/html/#spring-cloud-loadbalancer)
 - [x] Spring Cloud Config
   - **Application 의 설정 파일 ( application.properties / application.yml ) 을 동적으로 서버 호출을 통해서 읽어 온다.**
+  - 분산 시스템에서 서버 클라이언트 구성에 필요한 설정 정보를 외부 시스템에서 관리
+  - 하나의 중앙화 된 저장소에서 구성요소 관리 가능
+  - 각 서비스를 다시 빌드하지 않고 바로 적용 가능
   ```
   Application 을 구동하는 과정에서 application.properties / application.yml 설정 파일을 통해서 Server port, Eureka URL 등을 구동 시에 가져와서 선언하게 됩니다.
   각 프로젝트별로 설정 파일이 존재하고, 이 설정 파일은 프로젝트 내에 필요한 내용만 작성이 됩니다.
