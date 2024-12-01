@@ -13,7 +13,8 @@
 <img width="639" alt="image" src="https://github.com/user-attachments/assets/3fb62d40-30eb-4078-acdb-4818fe6283a1">
 
 ## 아키텍처
-![SpringCloudMicroservice_architecture](https://github.com/user-attachments/assets/027944d8-2d5b-4168-a90f-f6aaf0ad88ef)
+![SpringCloudMicroservice_architecture](https://github.com/user-attachments/assets/30772f78-9f68-4eab-ae0c-cb30960ed77e)
+
 
 ## 구성
 - [x] Spring Cloud Netflix Eureka Server [[discoveryservice]](https://github.com/IMWoo94/Spring-Cloud-Microservice/tree/main/discoveryservice)
